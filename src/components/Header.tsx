@@ -1,6 +1,6 @@
 import { AppBar, makeStyles, Theme, Box, Typography } from '@material-ui/core'
-import SearchBar from './SearchBar'
-import LocationInput from './LocationInput'
+import SearchBar from './ui/SearchBar'
+import LocationInput from './ui/LocationInput'
 
 
 const useStyles = makeStyles((theme: Theme) => ({
