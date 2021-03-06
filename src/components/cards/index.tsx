@@ -1,14 +1,8 @@
-import { Card, makeStyles, Theme } from '@material-ui/core'
-
-const useStyles = makeStyles((theme: Theme) => ({
-
-}))
+import RestaurantListing from './RestaurantListing'
 
 export default function Cards () {
 
   return (
-    <Card>
-
-    </Card>
+    <RestaurantListing />
   )
 }

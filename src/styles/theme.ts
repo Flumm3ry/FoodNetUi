@@ -11,7 +11,7 @@ export default createMuiTheme(
     palette: {
       contrastThreshold: 2,
       primary: {
-        main: '#eeeee4',
+        main: '#B30733',
       },
       secondary: {
         main: '#eeeee4',
