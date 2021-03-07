@@ -3,6 +3,12 @@ import PhoneIcon from '@material-ui/icons/Phone';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
 import CostIndicator from '../ui/CostIndicator';
 import { Rating } from '@material-ui/lab';
+import { Restaurant } from '../../states/appSlice';
+
+interface RestaurantCardProps {
+  rank: number,
+  restaurant: Restaurant,
+}
 
 const useStyles = makeStyles((theme: Theme) => ({
   smallText: {
@@ -17,7 +23,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }))
 
-export default function RestaurantCard () {
+export default function RestaurantCard ({rank, restaurant}: RestaurantCardProps) {
   const classes = useStyles()
 
   return (
@@ -30,15 +36,15 @@ export default function RestaurantCard () {
       <CardContent>
         <Grid container justify="space-between">
           <Grid xs={5}>
-            <Typography variant="h6" color="primary" style={{fontWeight: 'bold'}}>1. Big Tony's Risotto</Typography>
-            <Typography className={classes.smallText} >14 Armstrong St North, Ballarat</Typography>
+            <Typography variant="h6" color="primary" style={{fontWeight: 'bold'}}>{`${rank}. ${restaurant.name}`}</Typography>
+            <Typography className={classes.smallText} >{restaurant.address}</Typography>
           </Grid>
           <Grid xs={1}>
             <Divider orientation="vertical" flexItem style={{ height: '80%', margin: 'auto' }}/>
           </Grid>
           <Grid xs={5} style={{textAlign: 'center'}}>
-            <Typography><Rating precision={0.1} value={3.6} readOnly /></Typography>
-            <Typography className={classes.smallText} >Open Now</Typography>
+            <Typography><Rating precision={0.1} value={restaurant.averageRating} readOnly /></Typography>
+            <Typography className={classes.smallText} >{restaurant.info.includes("\"currently_open\": true") ? 'Open Now' : 'Closed'}</Typography>
           </Grid>
           <Grid xs={12}>
             <Divider component="hr" style={{margin: 5}}/>
@@ -47,19 +53,19 @@ export default function RestaurantCard () {
             <Typography className={classes.infoText} style={{fontWeight: 'bolder'}}>COST:</Typography>
           </Grid>
           <Grid xs={9}>
-            <Typography className={classes.infoText}><CostIndicator costIndication={3} /></Typography>
+            <Typography className={classes.infoText}><CostIndicator costIndication={restaurant.priceIndicator} /></Typography>
           </Grid>
           <Grid xs={3}>
             <Typography className={classes.infoText} style={{fontWeight: 'bolder'}}>HOURS:</Typography>
           </Grid>
           <Grid xs={9}>
-            <Typography className={classes.infoText}>10am-9pm</Typography>
+            <Typography className={classes.infoText}>{restaurant.openHours}</Typography>
           </Grid>
           <Grid xs={3}>
             <Typography className={classes.infoText} style={{fontWeight: 'bolder'}}>CUISINES:</Typography>
           </Grid>
           <Grid xs={9}>
-            <Typography className={classes.infoText}>Italian, Pasta, Pizza</Typography>
+            <Typography className={classes.infoText}>{restaurant.types}</Typography>
           </Grid>
         </Grid>
       </CardContent>

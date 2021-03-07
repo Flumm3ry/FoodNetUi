@@ -1,8 +1,19 @@
+import { useSelector } from 'react-redux'
+import { RootState } from '../../states/store'
 import RestaurantListing from './RestaurantListing'
 
 export default function Cards () {
+  const { filteredRestaurants } = useSelector((state: RootState) => state)
 
   return (
-    <RestaurantListing />
+    <>
+      {filteredRestaurants.map((r, i) => (
+        <RestaurantListing
+          key={r.name}
+          rank={i}
+          restaurant={r}
+        />
+      ))}
+    </>
   )
 }
