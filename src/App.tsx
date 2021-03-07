@@ -3,11 +3,10 @@ import Home from './components/routes/home';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Switch>
         <Route
           path="/"
-          exact={true}
           component={Home}
         />
       </Switch>

@@ -40,7 +40,7 @@ const Home = () => {
           <Header />
           <Box className={classes.root}>
             <Grid container justify="center">
-              { (searchTerm && searchedLocation) ? (
+              { (searchTerm && searchedLocation) && (
                 <>
                   <Grid item xs={12}>
                     <Typography variant="h4" style={{ paddingBottom: 15 }}>
@@ -54,10 +54,6 @@ const Home = () => {
                     <Cards />
                   </Grid>
                 </>
-              ) : (
-                <Typography variant="h4" style={{ paddingBottom: 15 }}>
-                  {`'${searchTerm}' places in '${searchedLocation}'`}
-                </Typography>
               )}
             </Grid>
           </Box>

@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   root: {
     marginLeft: 25,
     marginRight: 25,
-    width: 300,
+    width: 350,
   }
 }))
 
@@ -31,6 +31,7 @@ export default function SearchBar ({ onSearch, onChange, searchTerm }: SearchBar
       }}
       className={classes.root}
       variant="outlined"
+      placeholder="...Desserts (Search for a cuisine or dish)"
     />
   )
 }

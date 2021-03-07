@@ -11,7 +11,7 @@ interface SearchBarProps {
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     marginLeft: 25,
-    width: 250,
+    width: 300,
   }
 }))
 
@@ -30,6 +30,7 @@ export default function LocationInput ({ onSearch, onChange, searchTerm }: Searc
       }}
       className={classes.root}
       variant="outlined"
+      placeholder="Enter your location"
     />
   )
 }

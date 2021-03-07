@@ -7,8 +7,11 @@ import FilterGroup from "./filterGroup"
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     padding: theme.spacing(2),
+    margin: theme.spacing(1),
     borderRadius: 5,
     backgroundColor: 'white',
+    position: 'sticky',
+    top: 0,
   }
 }))
 

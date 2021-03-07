@@ -4,7 +4,6 @@ import MenuBookIcon from '@material-ui/icons/MenuBook';
 import CostIndicator from '../ui/CostIndicator';
 import { Rating } from '@material-ui/lab';
 import { Restaurant } from '../../states/appSlice';
-import AccessTimeIcon from '@material-ui/icons/AccessTime';
 
 interface RestaurantCardProps {
   rank: number,
@@ -24,21 +23,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }))
 
-const openHoursParser = (unparsedHours: string): string | JSX.Element => {
-  try {
-    const json = JSON.parse(unparsedHours)
-    console.log(json)
-
-    return (
-      <>
-        <AccessTimeIcon color="inherit"/><Typography>{`Open`}</Typography>
-      </>
-    )
-  } catch {
-    return ''
-  }
-}
-
 export default function RestaurantCard ({rank, restaurant}: RestaurantCardProps) {
   const classes = useStyles()
 
@@ -47,7 +31,7 @@ export default function RestaurantCard ({rank, restaurant}: RestaurantCardProps)
       <CardMedia
         component="img"
         style={{ height: 150 }}
-        src="https://via.placeholder.com/728x90.png?text=Visit+WhoIsHostingThis.com+Buyers+Guide%20C/O%20https://placeholder.com/"
+        src={`https://picsum.photos/500/200?random=${Math.random()}`}
       />
       <CardContent>
         <Grid container justify="space-between">
@@ -70,12 +54,6 @@ export default function RestaurantCard ({rank, restaurant}: RestaurantCardProps)
           </Grid>
           <Grid xs={9}>
             <Typography className={classes.infoText}><CostIndicator costIndication={Number(restaurant.price_indicator)} /></Typography>
-          </Grid>
-          <Grid xs={3}>
-            <Typography className={classes.infoText} style={{fontWeight: 'bolder'}}>HOURS:</Typography>
-          </Grid>
-          <Grid xs={9}>
-            <Typography className={classes.infoText}>{openHoursParser(restaurant.open_hours)}</Typography>
           </Grid>
           <Grid xs={3}>
             <Typography className={classes.infoText} style={{fontWeight: 'bolder'}}>CUISINES:</Typography>
