@@ -3,7 +3,9 @@ import React from 'react'
 import SearchIcon from '@material-ui/icons/Search';
 
 interface SearchBarProps {
-  onSearch(searchTerm: string): void
+  onSearch(): void
+  onChange(e: React.ChangeEvent<HTMLInputElement>): void
+  searchTerm: string
 }
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -14,22 +16,15 @@ const useStyles = makeStyles((theme: Theme) => ({
   }
 }))
 
-export default function SearchBar ({ onSearch }: SearchBarProps) {
-  const [searchTerm, setSearchTerm] = React.useState('')
-
+export default function SearchBar ({ onSearch, onChange, searchTerm }: SearchBarProps) {
   const classes = useStyles()
-
-  const handleSearchTermChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.persist()
-    setSearchTerm(e.target.value)
-  }
 
   return (
     <TextField
       value={searchTerm}
-      onChange={handleSearchTermChange}
+      onChange={onChange}
       onKeyPress={e => {
-        if (e.key === 'Enter') onSearch(searchTerm)
+        if (e.key === 'Enter') onSearch()
       }}
       InputProps={{
         startAdornment: <SearchIcon />

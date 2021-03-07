@@ -10,7 +10,7 @@ export default function Cards () {
       {filteredRestaurants.map((r, i) => (
         <RestaurantListing
           key={r.name}
-          rank={i}
+          rank={i + 1}
           restaurant={r}
         />
       ))}

@@ -3,7 +3,9 @@ import React from 'react'
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 
 interface SearchBarProps {
-  onSearch(searchTerm: string): void
+  onSearch(): void
+  onChange(e: React.ChangeEvent<HTMLInputElement>): void
+  searchTerm: string
 }
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -13,22 +15,15 @@ const useStyles = makeStyles((theme: Theme) => ({
   }
 }))
 
-export default function LocationInput ({ onSearch }: SearchBarProps) {
-  const [searchTerm, setSearchTerm] = React.useState('')
-
+export default function LocationInput ({ onSearch, onChange, searchTerm }: SearchBarProps) {
   const classes = useStyles()
-
-  const handleSearchTermChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.persist()
-    setSearchTerm(e.target.value)
-  }
 
   return (
     <TextField
       value={searchTerm}
-      onChange={handleSearchTermChange}
+      onChange={onChange}
       onKeyPress={e => {
-        if (e.key === 'Enter') onSearch(searchTerm)
+        if (e.key === 'Enter') onSearch()
       }}
       InputProps={{
         startAdornment: <LocationOnIcon style={{color: 'red'}}/>

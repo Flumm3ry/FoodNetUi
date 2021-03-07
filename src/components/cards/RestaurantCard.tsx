@@ -4,6 +4,7 @@ import MenuBookIcon from '@material-ui/icons/MenuBook';
 import CostIndicator from '../ui/CostIndicator';
 import { Rating } from '@material-ui/lab';
 import { Restaurant } from '../../states/appSlice';
+import AccessTimeIcon from '@material-ui/icons/AccessTime';
 
 interface RestaurantCardProps {
   rank: number,
@@ -22,6 +23,21 @@ const useStyles = makeStyles((theme: Theme) => ({
     margin: 'auto',
   },
 }))
+
+const openHoursParser = (unparsedHours: string): string | JSX.Element => {
+  try {
+    const json = JSON.parse(unparsedHours)
+    console.log(json)
+
+    return (
+      <>
+        <AccessTimeIcon color="inherit"/><Typography>{`Open`}</Typography>
+      </>
+    )
+  } catch {
+    return ''
+  }
+}
 
 export default function RestaurantCard ({rank, restaurant}: RestaurantCardProps) {
   const classes = useStyles()
@@ -43,7 +59,7 @@ export default function RestaurantCard ({rank, restaurant}: RestaurantCardProps)
             <Divider orientation="vertical" flexItem style={{ height: '80%', margin: 'auto' }}/>
           </Grid>
           <Grid xs={5} style={{textAlign: 'center'}}>
-            <Typography><Rating precision={0.1} value={restaurant.averageRating} readOnly /></Typography>
+            <Typography><Rating precision={0.1} value={Number(restaurant.average_rating)} readOnly /></Typography>
             <Typography className={classes.smallText} >{restaurant.info.includes("\"currently_open\": true") ? 'Open Now' : 'Closed'}</Typography>
           </Grid>
           <Grid xs={12}>
@@ -53,13 +69,13 @@ export default function RestaurantCard ({rank, restaurant}: RestaurantCardProps)
             <Typography className={classes.infoText} style={{fontWeight: 'bolder'}}>COST:</Typography>
           </Grid>
           <Grid xs={9}>
-            <Typography className={classes.infoText}><CostIndicator costIndication={restaurant.priceIndicator} /></Typography>
+            <Typography className={classes.infoText}><CostIndicator costIndication={Number(restaurant.price_indicator)} /></Typography>
           </Grid>
           <Grid xs={3}>
             <Typography className={classes.infoText} style={{fontWeight: 'bolder'}}>HOURS:</Typography>
           </Grid>
           <Grid xs={9}>
-            <Typography className={classes.infoText}>{restaurant.openHours}</Typography>
+            <Typography className={classes.infoText}>{openHoursParser(restaurant.open_hours)}</Typography>
           </Grid>
           <Grid xs={3}>
             <Typography className={classes.infoText} style={{fontWeight: 'bolder'}}>CUISINES:</Typography>

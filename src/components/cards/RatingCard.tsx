@@ -4,20 +4,20 @@ import { Rating } from "@material-ui/lab";
 interface RatingCardProps {
   service: string,
   rating: number,
-  numberOfReviews: number,
+  numberOfReviews: string,
 }
 
 export default function RatingCard({ service, rating, numberOfReviews}: RatingCardProps) {
 
   return (
-    <Card>
+    <Card style={{marginBottom: 25}}>
       <CardContent>
         <Typography display="inline">
           {service}
         </Typography>
-        <Rating value={rating} />
+        <Rating value={Number(rating)} readOnly />
         <Typography color="textSecondary" display="inline">
-          {`${numberOfReviews} reviews`}
+          {numberOfReviews}
         </Typography>
       </CardContent>
     </Card>
