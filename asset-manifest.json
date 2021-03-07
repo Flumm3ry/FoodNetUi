@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.js": "/FoodNetUi/static/js/main.e0039cb3.chunk.js",
+    "main.js.map": "/FoodNetUi/static/js/main.e0039cb3.chunk.js.map",
+    "runtime-main.js": "/FoodNetUi/static/js/runtime-main.071598fc.js",
+    "runtime-main.js.map": "/FoodNetUi/static/js/runtime-main.071598fc.js.map",
+    "static/js/2.0477b76b.chunk.js": "/FoodNetUi/static/js/2.0477b76b.chunk.js",
+    "static/js/2.0477b76b.chunk.js.map": "/FoodNetUi/static/js/2.0477b76b.chunk.js.map",
+    "index.html": "/FoodNetUi/index.html",
+    "static/js/2.0477b76b.chunk.js.LICENSE.txt": "/FoodNetUi/static/js/2.0477b76b.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.071598fc.js",
+    "static/js/2.0477b76b.chunk.js",
+    "static/js/main.e0039cb3.chunk.js"
+  ]
+}
